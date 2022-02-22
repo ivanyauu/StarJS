@@ -1,15 +1,23 @@
 // Import the functions you need from the SDKs you need
-const ENV = require('react-native-dotenv');
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import { apiKey, authDomain, projectId, storageBucket, messagingSenderId, appId, measurementId } from '@env';
+
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: ENV.KEY,
-  authDomain: ENV.DOMAIN,
-  projectId: ENV.ID,
-  storageBucket: ENV.BUCKET,
-  messagingSenderId: ENV.MSI,
-  appId: ENV.APP_ID,
-  measurementId: ENV.MEASUREMENT_ID
+  apiKey: apiKey,
+  authDomain: authDomain,
+  projectId: projectId,
+  storageBucket: storageBucket,
+  messagingSenderId: messagingSenderId,
+  appId: appId,
+  measurementId: measurementId
 };
 
-export { firebaseConfig };
+initializeApp(firebaseConfig);
+const db = getFirestore();
+const auth = getAuth()
+
+export { db, auth };
