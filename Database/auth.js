@@ -1,5 +1,5 @@
-import { createUserWithEmailAndPassword, getIdTokenResult, sendPasswordResetEmail } from 'firebase/auth';
-import { addDoc, collection, where, query, getDocs, deleteDoc, doc, QuerySnapshot } from 'firebase/firestore';
+import * as fa from 'firebase/auth';
+import * as fs from 'firebase/firestore';
 
 import { auth, db } from './firebase';
 
@@ -7,7 +7,7 @@ async function createParent(name, email, password) {
   let isSignUp = await parentAuthSignUp(email, password);
   if (isSignUp) {
     let userId = auth.currentUser.uid;
-    await addDoc(collection(db, '/Parents'), {
+    await fs.addDoc(collection(db, '/Parents'), {
       userId: userId,
       email: email,
       name: name,
@@ -26,7 +26,7 @@ async function createChild(name, email, password) {
   let isSignUp = await parentAuthSignUp(email, password);
   if (isSignUp) {
     let userId = auth.currentUser.uid;
-    await addDoc(collection(db, '/Kids'), {
+    await fs.addDoc(collection(db, '/Kids'), {
       userId: userId,
       email: email,
       name: name,
@@ -46,7 +46,7 @@ async function createChild(name, email, password) {
 // helper function for createParent
 async function parentAuthSignUp(email, password) {
   try {
-    await createUserWithEmailAndPassword(auth, email, password);
+    await fa.createUserWithEmailAndPassword(auth, email, password);
     console.log('User account created & signed in!');
     return true;
   }
@@ -66,9 +66,9 @@ async function parentAuthSignUp(email, password) {
 
 // can just call individual functions in react components
 async function forgotPass(email) {
-  await sendPasswordResetEmail(auth, email);
+  await fa.sendPasswordResetEmail(auth, email);
   // Obtain code from user.
-  await confirmPasswordReset(auth, code, newPassword);
+  await fa.confirmPasswordReset(auth, code, newPassword);
 }
 
 //delete account
@@ -77,19 +77,19 @@ async function deleteAccount(email, isParent) {
   if (isParent) {
     cl = '/Parents'
   }
-  const snap = await getDocs(query(collection(db, cl), where('email', '==', email)))
+  const snap = await fs.getDocs(fs.query(fs.collection(db, cl), fs.where('email', '==', email)))
   snap.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    deleteDoc(doc.ref)
+    fs.deleteDoc(doc.ref)
   });
   //console.log("Success!")
 }
 
 async function deleteThing() {
-  const snap = await getDocs(query(collection(db, '/testCollection'), where('test1', '==', 69)))
+  const snap = await fs.getDocs(fs.query(fs.collection(db, '/testCollection'), fs.where('test1', '==', 69)))
   snap.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    deleteDoc(doc.ref)
+    fs.deleteDoc(doc.ref)
   });
 
 }
