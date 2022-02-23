@@ -7,6 +7,7 @@ import { jsxs as _jsxs } from "react/jsx-runtime";
 
 import { db } from './Database/firebase';
 import { createParent, createChild, deleteAccount, deleteThing } from './Database/auth';
+import { login } from './Database/login';
 
 
 // example of adding doc to database
@@ -14,6 +15,8 @@ import { createParent, createChild, deleteAccount, deleteThing } from './Databas
 
 // example of Parent account creation
 //createParent('john', 'johndoe@gmail.com', 'test1234');
+
+
 
 export default function App() {
   return (
@@ -41,6 +44,10 @@ export default function App() {
       <Button
         onPress={() => createChild('john', 'johndoe3@gmail.com', 'test1234')}
         title="make child"
+      />
+            <Button
+        onPress={() => login('johndoe@gmail.com', 'test1234', true)}
+        title="login"
       />
     </View>
   );
