@@ -3,11 +3,12 @@ import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 import { addDoc, collection } from 'firebase/firestore';
+import * as fa from 'firebase/auth';
 import { jsxs as _jsxs } from "react/jsx-runtime";
 
-import { db } from './Database/firebase';
+import { auth, db } from './Database/firebase';
 import { createParent, createChild, deleteAccount, deleteThing } from './Database/auth';
-import { login } from './Database/login';
+import { login, logout } from './Database/login';
 
 
 // example of adding doc to database
@@ -38,16 +39,20 @@ export default function App() {
         title="remove a kid"
       />
       <Button
-        onPress={() => createParent('john', 'johndoe2@gmail.com', 'test1234')}
+        onPress={() => createParent('john', 'johndoe@gmail.com', 'test1234')}
         title="make parent"
       />
       <Button
         onPress={() => createChild('john', 'johndoe3@gmail.com', 'test1234')}
         title="make child"
       />
-            <Button
+      <Button
         onPress={() => login('johndoe@gmail.com', 'test1234', true)}
         title="login"
+      />
+      <Button
+        onPress={() => logout()}
+        title="log out"
       />
     </View>
   );

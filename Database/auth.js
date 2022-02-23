@@ -7,7 +7,7 @@ async function createParent(name, email, password) {
   let isSignUp = await parentAuthSignUp(email, password);
   if (isSignUp) {
     let userId = auth.currentUser.uid;
-    await fs.addDoc(collection(db, '/Parents'), {
+    await fs.addDoc(fs.collection(db, '/Parents'), {
       userId: userId,
       email: email,
       name: name,
@@ -26,7 +26,7 @@ async function createChild(name, email, password) {
   let isSignUp = await parentAuthSignUp(email, password);
   if (isSignUp) {
     let userId = auth.currentUser.uid;
-    await fs.addDoc(collection(db, '/Kids'), {
+    await fs.addDoc(fs.collection(db, '/Kids'), {
       userId: userId,
       email: email,
       name: name,
