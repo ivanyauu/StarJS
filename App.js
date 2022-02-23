@@ -45,8 +45,8 @@ export default function App() {
         onPress={() => createChild('john', 'johndoe3@gmail.com', 'test1234')}
         title="make child"
       />
-            <Button
-        onPress={() => login('johndoe@gmail.com', 'test1234', true)}
+      <Button
+        onPress={() => login('johndoe2@gmail.com', 'test1234', true)}
         title="login"
       />
     </View>
