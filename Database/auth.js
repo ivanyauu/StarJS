@@ -22,6 +22,27 @@ async function createParent(name, email, password) {
   }
 }
 
+async function createChild(name, email, password) {
+  let isSignUp = await parentAuthSignUp(email, password);
+  if (isSignUp) {
+    let userId = auth.currentUser.uid;
+    await addDoc(collection(db, '/Kids'), {
+      userId: userId,
+      email: email,
+      name: name,
+      familyId: null,
+      starCount: 0,
+      petType: 'placeholder'
+    });
+    return userId;
+  }
+  else {
+    //console.log("fail")
+    return null;
+  }
+}
+
+
 // helper function for createParent
 async function parentAuthSignUp(email, password) {
   try {
@@ -44,7 +65,7 @@ async function parentAuthSignUp(email, password) {
 }
 
 // can just call individual functions in react components
-async function forgotEmail(email) {
+async function forgotPass(email) {
   await sendPasswordResetEmail(auth, email);
   // Obtain code from user.
   await confirmPasswordReset(auth, code, newPassword);
@@ -52,7 +73,7 @@ async function forgotEmail(email) {
 
 //delete account
 async function deleteAccount(email, isParent) {
-  cl = '/Kids'
+  let cl = '/Kids'
   if (isParent) {
     cl = '/Parents'
   }
@@ -61,6 +82,7 @@ async function deleteAccount(email, isParent) {
     // doc.data() is never undefined for query doc snapshots
     deleteDoc(doc.ref)
   });
+  //console.log("Success!")
 }
 
 async function deleteThing() {
@@ -71,4 +93,4 @@ async function deleteThing() {
   });
 
 }
-export { createParent, deleteThing };
+export { createParent, createChild, deleteThing, deleteAccount };

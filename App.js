@@ -6,7 +6,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { jsxs as _jsxs } from "react/jsx-runtime";
 
 import { db } from './Database/firebase';
-import { createParent, deleteThing } from './Database/auth';
+import { createParent, createChild, deleteAccount, deleteThing } from './Database/auth';
 
 
 // example of adding doc to database
@@ -25,13 +25,22 @@ export default function App() {
         title="Add a document"
       />
       <Button
-        onPress={() => deleteThing()
+        onPress={() => deleteAccount('johndoe2@gmail.com', true)
         }
-        title="remove a document"
+        title="remove a parent"
+      />
+      <Button
+        onPress={() => deleteAccount('johndoe3@gmail.com', false)
+        }
+        title="remove a kid"
       />
       <Button
         onPress={() => createParent('john', 'johndoe2@gmail.com', 'test1234')}
         title="make parent"
+      />
+      <Button
+        onPress={() => createChild('john', 'johndoe3@gmail.com', 'test1234')}
+        title="make child"
       />
     </View>
   );
