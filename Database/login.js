@@ -2,6 +2,7 @@ import * as fa from 'firebase/auth';
 import * as fs from 'firebase/firestore';
 import { auth, db } from './firebase';
 
+// log in and return user data 
 async function login(email, password, isParent) {
   try {
     await fa.signInWithEmailAndPassword(auth, email, password);
@@ -19,9 +20,22 @@ async function login(email, password, isParent) {
     return userData;
   }
   catch (error) {
+    // catch if sign in didn't work
     console.log(error);
     return null;
   }
 }
 
-export { login };
+async function logout() {
+  try {
+    await auth.signOut();
+    return true;
+  }
+  catch (error) {
+    // catch if sign out didn't work
+    console.log(error);
+    return false;
+  }
+}
+
+export { login, logout };
