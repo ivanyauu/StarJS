@@ -7,7 +7,7 @@ async function createParent(name, email, password) {
   let isSignUp = await parentAuthSignUp(email, password);
   if (isSignUp) {
     let userId = auth.currentUser.uid;
-    await fs.addDoc(fs.collection(db, '/Parents'), {
+    await fs.setDoc(fs.doc(db, "Parents", `${userId}`), {
       userId: userId,
       email: email,
       name: name,
@@ -26,7 +26,7 @@ async function createChild(name, email, password) {
   let isSignUp = await parentAuthSignUp(email, password);
   if (isSignUp) {
     let userId = auth.currentUser.uid;
-    await fs.addDoc(fs.collection(db, '/Kids'), {
+    await fs.setDoc(fs.doc(db, "Kids", `${userId}`), {
       userId: userId,
       email: email,
       name: name,
@@ -72,16 +72,14 @@ async function forgotPass(email) {
 }
 
 //delete account
-async function deleteAccount(email, isParent) {
-  let cl = '/Kids'
+async function deleteAccount(uid, isParent) {
+  let cl = 'Kids'
   if (isParent) {
-    cl = '/Parents'
+    cl = 'Parents'
   }
-  const snap = await fs.getDocs(fs.query(fs.collection(db, cl), fs.where('email', '==', email)))
-  snap.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    fs.deleteDoc(doc.ref)
-  });
+  const doc = await fs.getDoc(fs.doc(db, cl, `${uid}`))
+  deleteDoc(doc.ref);
+
   fa.deleteUser(fa.getAuth().currentUser)
   //console.log("Success!")
 }
