@@ -78,7 +78,7 @@ async function deleteAccount(uid, isParent) {
     cl = 'Parents'
   }
   const doc = await fs.getDoc(fs.doc(db, cl, `${uid}`))
-  deleteDoc(doc.ref);
+  fs.deleteDoc(fs.doc(db, cl, `${uid}`));
 
   fa.deleteUser(fa.getAuth().currentUser)
   //console.log("Success!")

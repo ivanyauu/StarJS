@@ -11,13 +11,10 @@ async function login(email, password, isParent) {
     if (isParent) {
       cl = '/Parents'
     }
-    let snap = await fs.getDocs(fs.query(fs.collection(db, cl), fs.where('userId', '==', userId)));
-    let userData;
-    snap.forEach((doc) => {
-      userData = doc.data();
-    });
-    console.log(userData);
-    return userData;
+    let userData = await fs.getDoc(fs.doc(db, cl, `${userId}`));
+
+    console.log(userData.data());
+    return userData.data();
   }
   catch (error) {
     // catch if sign in didn't work

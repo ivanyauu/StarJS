@@ -20,12 +20,12 @@ export default function App() {
         title="Add a document"
       />
       <Button
-        onPress={() => deleteAccount('johndoe2@gmail.com', true)
+        onPress={() => deleteAccount(auth.currentUser.uid, true)
         }
         title="remove a parent"
       />
       <Button
-        onPress={() => deleteAccount('johndoe3@gmail.com', false)
+        onPress={() => deleteAccount(auth.currentUser.uid, false)
         }
         title="remove a kid"
       />
