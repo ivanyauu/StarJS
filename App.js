@@ -3,21 +3,12 @@ import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 import { addDoc, collection } from 'firebase/firestore';
-import * as fa from 'firebase/auth';
 import { jsxs as _jsxs } from "react/jsx-runtime";
 
 import { auth, db } from './Database/firebase';
 import { createParent, createChild, deleteAccount, deleteThing } from './Database/auth';
 import { login, logout } from './Database/login';
-
-
-// example of adding doc to database
-// addDoc(collection(db, '/testCollection'), {test1: 'wow'});
-
-// example of Parent account creation
-//createParent('john', 'johndoe@gmail.com', 'test1234');
-
-
+import { createFamily, joinFamily, deleteFamily } from './Database/family';
 
 export default function App() {
   return (
@@ -53,6 +44,18 @@ export default function App() {
       <Button
         onPress={() => logout()}
         title="log out"
+      />
+      <Button
+        onPress={() => createFamily()}
+        title="create family"
+      />
+      <Button
+        onPress={() => joinFamily('027DLY', '127', false)}
+        title="join family"
+      />
+      <Button
+        onPress={() => deleteFamily('027DLY', '129')}
+        title="delete family"
       />
     </View>
   );
