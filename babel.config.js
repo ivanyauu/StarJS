@@ -4,6 +4,11 @@ module.exports = function(api) {
     presets: [
       'babel-preset-expo',
     ],
+    env: {
+      production: {
+        plugins: ['react-native-paper/babel'],
+      },
+    },
     plugins: [
       ["module:react-native-dotenv", {
         "moduleName": "@env",
@@ -12,7 +17,7 @@ module.exports = function(api) {
         "whitelist": null,
         "safe": false,
         "allowUndefined": true
-      }]
+      }],
     ]
     
     //   ["inline-dotenv"], {
