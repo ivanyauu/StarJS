@@ -3,6 +3,8 @@ import React from 'react';
 import {DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { LoginScreen } from './Screens/LoginScreen';
 import { TestScreen } from './Screens/TestScreen';
+import { JoinFamily } from './Screens/JoinFamily';
+import { PickParentChild } from './Screens/PickParentChild';
 
 
 const theme = {
@@ -19,7 +21,9 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      <TestScreen></TestScreen>
+      {/* <TestScreen></TestScreen> */}
+      {/* <JoinFamily></JoinFamily> */}
+      <PickParentChild></PickParentChild>
     </PaperProvider>
   );
 }
