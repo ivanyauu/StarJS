@@ -7,6 +7,9 @@ import { JoinFamily } from './Screens/JoinFamily';
 import { PickParentChild } from './Screens/PickParentChild';
 import { RegisterScreen } from './Screens/RegisterScreen';
 import { CreateJoinFamily } from './Screens/CreateJoinFamily';
+import '@fontsource/roboto/700.css';
+import { createTheme } from '@mui/material/styles';
+import Navigator from './Routes/homeStack'
 
 
 
@@ -24,9 +27,7 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      {/* <TestScreen></TestScreen> */}
-      {/* <JoinFamily></JoinFamily> */}
-      <CreateJoinFamily></CreateJoinFamily>
+    <Navigator/>
     </PaperProvider>
   );
 }

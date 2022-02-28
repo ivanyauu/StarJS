@@ -14,12 +14,12 @@ async function login(email, password, isParent) {
     let userData = await fs.getDoc(fs.doc(db, cl, `${userId}`));
 
     console.log(userData.data());
-    return userData.data();
+    return true;
   }
   catch (error) {
     // catch if sign in didn't work
     console.log(error);
-    return null;
+    return false;
   }
 }
 

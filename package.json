@@ -10,6 +10,10 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@fontsource/roboto": "^4.5.3",
+    "@mui/material": "^5.4.3",
     "@react-native-firebase/app": "^14.5.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
