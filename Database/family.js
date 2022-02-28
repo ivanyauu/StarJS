@@ -1,5 +1,4 @@
 import * as fs from 'firebase/firestore';
-import { doc } from 'firebase/firestore';
 import { auth, db } from './firebase';
 
 // create family and return familyID

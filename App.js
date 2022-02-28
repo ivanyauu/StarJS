@@ -6,6 +6,7 @@ import { TestScreen } from './Screens/TestScreen';
 import { JoinFamily } from './Screens/JoinFamily';
 import { PickParentChild } from './Screens/PickParentChild';
 import { RegisterScreen } from './Screens/RegisterScreen';
+import { CreateJoinFamily } from './Screens/CreateJoinFamily';
 
 
 
@@ -25,7 +26,7 @@ export default function App() {
     <PaperProvider theme={theme}>
       {/* <TestScreen></TestScreen> */}
       {/* <JoinFamily></JoinFamily> */}
-      <RegisterScreen></RegisterScreen>
+      <CreateJoinFamily></CreateJoinFamily>
     </PaperProvider>
   );
 }
