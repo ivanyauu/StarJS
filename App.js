@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-import { LoginScreen } from './Screens/LoginScreen';
-import { TestScreen } from './Screens/TestScreen';
+import { RegisterScreen } from './Screens/RegisterScreen';
+//import { LoginScreen } from './Screens/LoginScreen';
+//import { TestScreen } from './Screens/TestScreen';
 
 
 const theme = {
@@ -19,7 +20,7 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      <TestScreen></TestScreen>
+      <RegisterScreen></RegisterScreen>
     </PaperProvider>
   );
 }
