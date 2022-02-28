@@ -4,6 +4,7 @@ import { Button, Card, TextInput, DefaultTheme, Title, Text } from 'react-native
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import {createParent, createChild} from '../Database/auth.js'
 
 
 const styles = StyleSheet.create({
@@ -45,7 +46,9 @@ const styles = StyleSheet.create({
         color: 'blue',
     },
   });
-
+function isParent(){
+    return true
+}
 export const RegisterScreen = ({ navigation }) => {
     return (
         <SafeAreaView style = {styles.container}>
@@ -54,10 +57,25 @@ export const RegisterScreen = ({ navigation }) => {
             <Card style = {styles.card}>
                 <Card.Content>
                     <Title style = {styles.title}>Register</Title>
-                    <TextInput  style = {styles.inputs} label = 'Email' keyboardType='email-address'></TextInput>
-                    <TextInput  style = {styles.inputs} label = 'Password' secureTextEntry = {true}></TextInput>
-                    <TextInput  style = {styles.inputs} label = 'Confirm Password' secureTextEntry = {true}></TextInput>
-                    <Button uppercase = {false} mode = "contained" onPress={() => navigation.navigate('Test')}>Register</Button>
+                    <TextInput style={styles.inputs} label='Name' secureTextEntry={true} onChangeText={username => setUsername(username)} ></TextInput>
+                    <TextInput style={styles.inputs} label='Email' keyboardType='email-address' onChangeText={email => setEmail(email)}></TextInput>
+                    <TextInput style={styles.inputs} label='Password' secureTextEntry={true} onChangeText={pass => setPass(pass)} ></TextInput>
+                    <TextInput style={styles.inputs} label='Confirm Password' secureTextEntry={true} onChangeText={confirm => setConfirm(confirm)} ></TextInput>
+                    <Button uppercase = {false} mode = "contained" 
+                        onPress={() => {
+                            if(pass != confirm)
+                            {
+                                alert("Passwords do not match!")
+                            }
+                            if (isParent()){
+                                createParent(username,email,pass)
+                            }
+                            else{
+                                createChild(username,email,pass)
+                            }
+                            navigation.navigate('./LoginScreen.js')
+                        }
+                        }>Register</Button>
                     <View style = {styles.row}>
                         <Text>Already have an account? </Text>
                         <TouchableOpacity onPress={()=>navigation.navigate('./LoginScreen.js')}>
