@@ -5,6 +5,8 @@ import { LoginScreen } from './Screens/LoginScreen';
 import { TestScreen } from './Screens/TestScreen';
 import { JoinFamily } from './Screens/JoinFamily';
 import { PickParentChild } from './Screens/PickParentChild';
+import { RegisterScreen } from './Screens/RegisterScreen';
+
 
 
 const theme = {
@@ -23,7 +25,7 @@ export default function App() {
     <PaperProvider theme={theme}>
       {/* <TestScreen></TestScreen> */}
       {/* <JoinFamily></JoinFamily> */}
-      <PickParentChild></PickParentChild>
+      <RegisterScreen></RegisterScreen>
     </PaperProvider>
   );
 }
