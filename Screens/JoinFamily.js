@@ -48,7 +48,7 @@ export const JoinFamily = ({ navigation }) => {
       <Button
         style={styles.button}
         labelStyle={styles.buttonText}
-        onPress={() => joinFamily(familyId, auth.currentUser.uid, true)}>
+        onPress={() => joinFamily(familyId, auth.currentUser.uid, navigation.getParam('isParent'))}>
         Join
       </Button>
     </SafeAreaView>

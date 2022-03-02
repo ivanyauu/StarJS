@@ -68,13 +68,14 @@ export const RegisterScreen = ({ navigation }) => {
                                     alert("Passwords do not match!")
                                     return;
                                 }
-                                if (navigation.getParam('isParent')) {
+                                let isParent = navigation.getParam('isParent')
+                                if (isParent) {
                                     createParent(username, email, pass)
-                                    navigation.navigate('CreateJoinFamily')
+                                    navigation.navigate('CreateJoinFamily', { isParent })
                                 }
                                 else {
                                     createChild(username, email, pass)
-                                    navigation.navigate('JoinFamily')
+                                    navigation.navigate('JoinFamily', { isParent })
                                 }
                                 //navigation.navigate('Test')
                             }
