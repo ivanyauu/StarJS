@@ -53,6 +53,7 @@ export const PickParentChild = ({ navigation }) => {
     else if (!isParent && isParentButton) {
       setParent(true);
     }
+    navigation.navigate('Register', {isParent})
   }
 
   return (
@@ -71,13 +72,7 @@ export const PickParentChild = ({ navigation }) => {
           onPress={() => clickButton(false)}>
             Child
         </Button>
-      </View>
-      <Button 
-        style={styles.continueButton}
-        labelStyle={styles.continueButtonText}
-        onPress={() => console.log(isParent)}>
-          Continue
-      </Button>   
+      </View> 
     </SafeAreaView>
   );
 }
