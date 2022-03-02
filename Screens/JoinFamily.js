@@ -35,21 +35,21 @@ const styles = StyleSheet.create({
 
 export const JoinFamily = ({ navigation }) => {
   const [familyId, setFamilyId] = React.useState('');
-  
+
   return (
-    <SafeAreaView style = {styles.container}>
-      <Text style = {styles.text}>Family ID</Text>
-      <TextInput 
-        style = {styles.inputs}
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.text}>Family ID</Text>
+      <TextInput
+        style={styles.inputs}
         placeholder="Family ID"
         value={familyId}
         onChangeText={familyId => setFamilyId(familyId)}
       />
-      <Button 
+      <Button
         style={styles.button}
         labelStyle={styles.buttonText}
-        onPress={() => joinFamily(familyId, '9jLFp9p6JHdLrjDqaFLnUtOWdvJ2', true)}>
-          Join
+        onPress={() => joinFamily(familyId, auth.currentUser.uid, true)}>
+        Join
       </Button>
     </SafeAreaView>
   );

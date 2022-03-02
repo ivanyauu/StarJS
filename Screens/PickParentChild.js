@@ -44,35 +44,28 @@ const styles = StyleSheet.create({
 });
 
 export const PickParentChild = ({ navigation }) => {
-  const [isParent, setParent] = React.useState(true);
-  
-  const clickButton = (isParentButton) => {
-    if (isParent && !isParentButton) {
-      setParent(false);
-    }
-    else if (!isParent && isParentButton) {
-      setParent(true);
-    }
-    navigation.navigate('Register', {isParent})
+
+  const clickButton = (isParent) => {
+    navigation.navigate('Register', { isParent })
   }
 
   return (
-    <SafeAreaView style = {styles.container}>
-      <Text style = {styles.text}>Are you a parent or a child?</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.text}>Are you a parent or a child?</Text>
       <View style={styles.buttonContainer}>
-        <Button 
+        <Button
           style={styles.button}
           labelStyle={styles.buttonText}
           onPress={() => clickButton(true)}>
-            Parent
+          Parent
         </Button>
-        <Button 
+        <Button
           style={styles.button}
           labelStyle={styles.buttonText}
           onPress={() => clickButton(false)}>
-            Child
+          Child
         </Button>
-      </View> 
+      </View>
     </SafeAreaView>
   );
 }

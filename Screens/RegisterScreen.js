@@ -70,9 +70,11 @@ export const RegisterScreen = ({ navigation }) => {
                                 }
                                 if (navigation.getParam('isParent')) {
                                     createParent(username, email, pass)
+                                    navigation.navigate('CreateJoinFamily')
                                 }
                                 else {
                                     createChild(username, email, pass)
+                                    navigation.navigate('JoinFamily')
                                 }
                                 //navigation.navigate('Test')
                             }
