@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   }
 });
 
+
 export const CreateJoinFamily = ({ navigation }) => {
   const [isCreate, setCreate] = React.useState(true);
   
