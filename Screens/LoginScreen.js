@@ -71,7 +71,7 @@ export const LoginScreen = ({ navigation }) => {
                                 console.log('NOT LOGGED IN')
                               }
                             }}>Login</Button>
-                        <Button uppercase={false}>Sign Up</Button>
+                        <Button uppercase={false} onPress = {() => {navigation.navigate('PickParentChild', );}}>Don't Have an account? Sign Up!</Button>
                     </Card.Content>
                 </Card>
             </View>

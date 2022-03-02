@@ -46,9 +46,6 @@ const styles = StyleSheet.create({
         color: 'blue',
     },
 });
-function isParent() {
-    return false
-}
 export const RegisterScreen = ({ navigation }) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -71,13 +68,13 @@ export const RegisterScreen = ({ navigation }) => {
                                     alert("Passwords do not match!")
                                     return;
                                 }
-                                if (isParent()) {
+                                if (navigation.getParam('isParent')) {
                                     createParent(username, email, pass)
                                 }
                                 else {
                                     createChild(username, email, pass)
                                 }
-                                //navigation.navigate('./LoginScreen.js')
+                                //navigation.navigate('Test')
                             }
                             }>Register</Button>
                         <View style={styles.row}>
