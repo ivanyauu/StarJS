@@ -9,6 +9,7 @@ import { auth, db } from '../Database/firebase';
 import { createParent, createChild, deleteAccount, deleteThing } from '../Database/auth';
 import { login, logout } from '../Database/login';
 import { createFamily, joinFamily, deleteFamily } from '../Database/family';
+import { createStore } from '../Database/store';
 
 export const TestScreen = () => {
   return (
@@ -56,6 +57,10 @@ export const TestScreen = () => {
       <Button
         onPress={() => deleteFamily('027DLY', '129')}
         title="delete family"
+      />
+      <Button
+        onPress={() => createStore()}
+        title="create store"
       />
     </View>
   );
