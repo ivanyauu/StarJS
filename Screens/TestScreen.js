@@ -9,7 +9,7 @@ import { auth, db } from '../Database/firebase';
 import { createParent, createChild, deleteAccount, deleteThing } from '../Database/auth';
 import { login, logout } from '../Database/login';
 import { createFamily, joinFamily, deleteFamily } from '../Database/family';
-import { createStore } from '../Database/store';
+import { createStore, addItem, removeItem, purchaseItem} from '../Database/store';
 
 export const TestScreen = () => {
   return (
@@ -61,6 +61,18 @@ export const TestScreen = () => {
       <Button
         onPress={() => createStore()}
         title="create store"
+      />
+      <Button
+        onPress={() => addItem('TestItem', 'this is a test', 100, 'RGx3b0gNLavrvv6Ctefz')}
+        title="add store item"
+      />
+      <Button
+        onPress={() => removeItem('RGx3b0gNLavrvv6Ctefz', 'TestItem')}
+        title="remove store item"
+      />
+      <Button
+        onPress={() => purchaseItem('RGx3b0gNLavrvv6Ctefz', 'TestItem')}
+        title="purchase store item"
       />
     </View>
   );
