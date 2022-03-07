@@ -1,11 +1,13 @@
 import * as fs from 'firebase/firestore';
 import { auth, db } from './firebase';
-
+import {createStore} from './store';
 // create family and return familyID
 async function createFamily() {
   try {
 
     let familyId = generateFamilyID();
+    let storeId = await createStore();
+    console.log(storeId);
     let doesIdExist = (await fs.getDoc(fs.doc(db, 'Families', `${familyId}`))).exists();
     while (doesIdExist) {
       familyId = generateFamilyID();
@@ -16,7 +18,7 @@ async function createFamily() {
       familyID: familyId,
       parents: [],
       children: [],
-      store: null, // TODO implement store
+      store: storeId,
       chores: []
     });
     console.log('done');
