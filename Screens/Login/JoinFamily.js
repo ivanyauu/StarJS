@@ -1,8 +1,14 @@
 import * as React from 'react'
 import { SafeAreaView, Image, StyleSheet, Text, View } from 'react-native';
 import { Button, Card, TextInput, DefaultTheme } from 'react-native-paper';
+<<<<<<< Updated upstream:Screens/Login/JoinFamily.js
 import { joinFamily } from '../../Database/family';
 import { auth } from '../../Database/firebase';
+=======
+import { joinFamily } from '../Database/family';
+import { auth, db } from '../Database/firebase';
+import { doc, updateDoc } from 'firebase/firestore';
+>>>>>>> Stashed changes:Screens/JoinFamily.js
 
 const styles = StyleSheet.create({
   container: {
@@ -48,7 +54,22 @@ export const JoinFamily = ({ navigation }) => {
       <Button
         style={styles.button}
         labelStyle={styles.buttonText}
-        onPress={() => joinFamily(familyId, auth.currentUser.uid, navigation.getParam('isParent'))}>
+        onPress={() => {
+          if (navigation.getParam('isParent')){
+            const userRef = doc(db, "Parents", auth.currentUser.uid)
+            updateDoc(userRef, {
+              familyId: familyId,
+            })
+          }
+          else
+          {
+            const userRef = doc(db, "Kids", auth.currentUser.uid)
+            updateDoc(userRef, {
+              familyId: familyId,
+            })
+          }
+          joinFamily(familyId, auth.currentUser.uid, navigation.getParam('isParent'))
+          }}>
         Join
       </Button>
     </SafeAreaView>

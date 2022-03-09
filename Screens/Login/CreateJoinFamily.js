@@ -1,8 +1,14 @@
 import * as React from 'react'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
+<<<<<<< Updated upstream:Screens/Login/CreateJoinFamily.js
 import { joinFamily, createFamily } from '../../Database/family';
 import { auth } from '../../Database/firebase';
+=======
+import { joinFamily, createFamily } from '../Database/family';
+import { auth, db } from '../Database/firebase';
+import { doc, updateDoc } from 'firebase/firestore';
+>>>>>>> Stashed changes:Screens/CreateJoinFamily.js
 
 const styles = StyleSheet.create({
   container: {
@@ -61,7 +67,13 @@ export const CreateJoinFamily = ({ navigation }) => {
   const continueButton = async () => {
     let isParent = navigation.getParam('isParent')
     if (isCreate) {
-      joinFamily(await createFamily(), auth.currentUser.uid, navigation.getParam('isParent'))
+      const familyID = await createFamily()
+      const userRef = doc(db, "Parents", auth.currentUser.uid)
+      updateDoc(userRef, {
+        familyId: familyID,
+      })
+      console.log('Profile updated!')
+      joinFamily(familyID, auth.currentUser.uid, navigation.getParam('isParent'))
     }
     else {
       navigation.navigate('JoinFamily', { isParent })

@@ -13,7 +13,7 @@ async function createParent(name, email, password) {
       name: name,
       isParent: true,
       whichParent: 'PlaceHolder',
-      familyId: null
+      familyId: ''
     });
     return userId;
   }
@@ -32,7 +32,7 @@ async function createChild(name, email, password) {
       email: email,
       name: name,
       isParent: false,
-      familyId: null,
+      familyId: '',
       starCount: 0,
       petType: 'placeholder'
     });

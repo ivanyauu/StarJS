@@ -64,15 +64,15 @@ export const TestScreen = () => {
         title="create store"
       />
       <Button
-        onPress={() => addItem('TestItem', 'this is a test', 100, 'RGx3b0gNLavrvv6Ctefz')}
+        onPress={() => addItem('TestItem', 'this is a test', 100, 'P5ZfSyl4rgyKa0fN39zJ')}
         title="add store item"
       />
       <Button
-        onPress={() => removeItem('RGx3b0gNLavrvv6Ctefz', 'TestItem')}
+        onPress={() => removeItem('P5ZfSyl4rgyKa0fN39zJ', 'TestItem')}
         title="remove store item"
       />
       <Button
-        onPress={() => purchaseItem('RGx3b0gNLavrvv6Ctefz', 'TestItem')}
+        onPress={() => purchaseItem('P5ZfSyl4rgyKa0fN39zJ', 'TestItem')}
         title="purchase store item"
       />
       <Button
