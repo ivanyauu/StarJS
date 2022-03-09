@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         bottom: '4%',
     },
     inputs: {
-        height: 40,
+        height: 46,
         fontFamily: 'Plus Jakarta Sans',
 
     }
