@@ -68,11 +68,7 @@ export const LoginScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-<<<<<<< HEAD:Screens/LoginScreen.js
-            <Image style={styles.image} source={require('../assets/LogoFinal.png')} />
-=======
-            <Image style={styles.image} source={require('../../assets/StarLogo.png')} />
->>>>>>> ddc57f32aad75f1042e8390f9371e5a49d6832ce:Screens/Login/LoginScreen.js
+            <Image style={styles.image} source={require('../../assets/LogoFinal.png')} />
             <View style={styles.view} >
                 <Card style={styles.card}>
                     <Card.Content>

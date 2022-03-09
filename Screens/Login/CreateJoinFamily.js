@@ -1,14 +1,9 @@
 import * as React from 'react'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
-<<<<<<< Updated upstream:Screens/Login/CreateJoinFamily.js
 import { joinFamily, createFamily } from '../../Database/family';
-import { auth } from '../../Database/firebase';
-=======
-import { joinFamily, createFamily } from '../Database/family';
-import { auth, db } from '../Database/firebase';
+import { auth, db } from '../../Database/firebase';
 import { doc, updateDoc } from 'firebase/firestore';
->>>>>>> Stashed changes:Screens/CreateJoinFamily.js
 
 const styles = StyleSheet.create({
   container: {
