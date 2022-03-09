@@ -1,12 +1,14 @@
 import * as fs from 'firebase/firestore';
 import { auth, db } from './firebase';
-import {createStore} from './store';
+import { createStore } from './store';
+import { createChoreList } from './chore';
 // create family and return familyID
 async function createFamily() {
   try {
 
     let familyId = generateFamilyID();
     let storeId = await createStore();
+    let choreListId = await createChoreList();
     console.log(storeId);
     let doesIdExist = (await fs.getDoc(fs.doc(db, 'Families', `${familyId}`))).exists();
     while (doesIdExist) {
@@ -19,12 +21,12 @@ async function createFamily() {
       parents: [],
       children: [],
       store: storeId,
-      chores: []
+      chores: choreListId
     });
     console.log('done');
     return familyId;
   }
-  catch(error) {
+  catch (error) {
     console.log(error);
     return null;
   }
@@ -46,9 +48,10 @@ async function joinFamily(familyId, uid, isParent) {
     let addUser = {};
     addUser[cl] = fs.arrayUnion(uid);
     await fs.updateDoc(fs.doc(db, "Families", `${familyId}`), addUser);
+
     return familyId;
   }
-  catch(error) {
+  catch (error) {
     console.log(error);
     return null;
   }
@@ -74,7 +77,7 @@ async function deleteFamily(familyId, uid) {
     }
     return true;
   }
-  catch(error) {
+  catch (error) {
     console.log(error);
     return false;
   }
@@ -83,11 +86,11 @@ async function deleteFamily(familyId, uid) {
 // create 6 char digit 3 int 3 char
 function generateFamilyID() {
   let familyId = "";
-  for(let i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i++) {
     let digit = Math.floor(Math.random() * 10) % 10;
     familyId += `${digit}`;
   }
-  for(let i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i++) {
     let char = String.fromCharCode(65 + Math.floor(Math.random() * 26));
     familyId += char;
   }
