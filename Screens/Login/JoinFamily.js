@@ -60,8 +60,23 @@ export const JoinFamily = ({ navigation }) => {
         <Button
           style={styles.button}
           labelStyle={styles.buttonText}
-          onPress={() => joinFamily(familyId, auth.currentUser.uid, navigation.getParam('isParent'))}>
-          Join
+          onPress={() => {
+            if (navigation.getParam('isParent')){
+              const userRef = doc(db, "Parents", auth.currentUser.uid)
+              updateDoc(userRef, {
+                familyId: familyId,
+              })
+            }
+            else
+            {
+              const userRef = doc(db, "Kids", auth.currentUser.uid)
+              updateDoc(userRef, {
+                familyId: familyId,
+              })
+            }
+            joinFamily(familyId, auth.currentUser.uid, navigation.getParam('isParent'))
+          }}>
+            Join
         </Button>
       </Card>
     </SafeAreaView>
