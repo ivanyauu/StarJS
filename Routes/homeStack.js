@@ -6,10 +6,14 @@ import { PickParentChild } from "../Screens/Login/PickParentChild";
 import { CreateJoinFamily } from "../Screens/Login/CreateJoinFamily";
 import { JoinFamily } from "../Screens/Login/JoinFamily";
 import { RegisterScreen } from "../Screens/Login/RegisterScreen";
+import { LoginPage } from "../Screens/Login/LoginPage";
 
 const screens = {
-    Login: {
+    LoginHome:{
         screen: LoginScreen
+    },
+    LoginPage: {
+        screen: LoginPage
     },
     PickParentChild:{
         screen: PickParentChild
