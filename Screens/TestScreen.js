@@ -9,7 +9,8 @@ import { auth, db } from '../Database/firebase';
 import { createParent, createChild, deleteAccount, deleteThing } from '../Database/auth';
 import { login, logout } from '../Database/login';
 import { createFamily, joinFamily, deleteFamily } from '../Database/family';
-import { createStore, addItem, removeItem, purchaseItem} from '../Database/store';
+import { createStore, addItem, removeItem, purchaseItem } from '../Database/store';
+import { createChoreList, addChore, removeChore, finishChore } from '../Database/chore';
 
 export const TestScreen = () => {
   return (
@@ -73,6 +74,18 @@ export const TestScreen = () => {
       <Button
         onPress={() => purchaseItem('RGx3b0gNLavrvv6Ctefz', 'TestItem')}
         title="purchase store item"
+      />
+      <Button
+        onPress={() => addChore('TestItem', 'this is a test', 'kYnvrMjaYrzXMIS7wrBL')}
+        title="add chore item"
+      />
+      <Button
+        onPress={() => removeChore('kYnvrMjaYrzXMIS7wrBL', 'TestItem')}
+        title="remove chore item"
+      />
+      <Button
+        onPress={() => finishChore('kYnvrMjaYrzXMIS7wrBL', 'TestItem')}
+        title="finish chore item"
       />
     </View>
   );
