@@ -64,22 +64,29 @@ export const RegisterScreen = ({ navigation }) => {
                         <TextInput style={styles.inputs} label='Confirm Password' secureTextEntry={true} onChangeText={confirm => setConfirm(confirm)} ></TextInput>
                         <Button uppercase={false} mode="contained"
                             onPress={() => {
+                                if (pass.length < 6)
+                                {
+                                    alert("Password must be longer than 6 characters!")
+                                    return;
+                                }
                                 if (pass != confirm) {
                                     alert("Passwords do not match!")
                                     return;
                                 }
-                                if (navigation.getParam('isParent')) {
+                                let isParent = navigation.getParam('isParent')
+                                if (isParent) {
                                     createParent(username, email, pass)
+                                    navigation.navigate('CreateJoinFamily', { isParent })
                                 }
                                 else {
                                     createChild(username, email, pass)
+                                    navigation.navigate('JoinFamily', { isParent })
                                 }
-                                //navigation.navigate('Test')
                             }
                             }>Register</Button>
                         <View style={styles.row}>
                             <Text>Already have an account? </Text>
-                            <TouchableOpacity onPress={() => navigation.navigate('./LoginScreen.js')}>
+                            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                                 <Text style={styles.blue}>Login</Text>
                             </TouchableOpacity>
                         </View>

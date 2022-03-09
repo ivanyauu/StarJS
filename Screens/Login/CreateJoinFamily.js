@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
-import { createFamily } from '../../Database/family';
+import { joinFamily, createFamily } from '../Database/family';
+import { auth } from '../Database/firebase';
 
 const styles = StyleSheet.create({
   container: {
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
 
 export const CreateJoinFamily = ({ navigation }) => {
   const [isCreate, setCreate] = React.useState(true);
-  
+
   const clickButton = (isCreateButton) => {
     if (isCreate && !isCreateButton) {
       setCreate(false);
@@ -57,38 +58,39 @@ export const CreateJoinFamily = ({ navigation }) => {
     }
   }
 
-  const continueButton = () => {
+  const continueButton = async () => {
+    let isParent = navigation.getParam('isParent')
     if (isCreate) {
-      console.log(createFamily());
+      joinFamily(await createFamily(), auth.currentUser.uid, navigation.getParam('isParent'))
     }
     else {
-      console.log('move to join family screen');
+      navigation.navigate('JoinFamily', { isParent })
     }
   }
 
   return (
-    <SafeAreaView style = {styles.container}>
-      <Text style = {styles.text}>Create or Join Family</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.text}>Create or Join Family</Text>
       <View style={styles.buttonContainer}>
-        <Button 
+        <Button
           style={styles.button}
           labelStyle={styles.buttonText}
           onPress={() => clickButton(true)}>
-            Create
+          Create
         </Button>
-        <Button 
+        <Button
           style={styles.button}
           labelStyle={styles.buttonText}
           onPress={() => clickButton(false)}>
-            Join
+          Join
         </Button>
       </View>
-      <Button 
+      <Button
         style={styles.continueButton}
         labelStyle={styles.continueButtonText}
         onPress={() => continueButton()}>
-          Continue
-      </Button>   
+        Continue
+      </Button>
     </SafeAreaView>
   );
 }

@@ -27,9 +27,7 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      {/* <Navigator/> */}
-      {/* <NavigationBar/> */}
-      <PickParentChild/>
+      <Navigator />
     </PaperProvider>
   );
 }

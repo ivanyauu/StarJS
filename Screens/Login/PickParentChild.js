@@ -70,8 +70,8 @@ export const PickParentChild = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style = {styles.container}>
-      <Text style = {styles.text}>Are you a parent or a child?</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.text}>Are you a parent or a child?</Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => clickButton()}

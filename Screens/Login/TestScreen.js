@@ -5,10 +5,12 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import { addDoc, collection } from 'firebase/firestore';
 import { jsxs as _jsxs } from "react/jsx-runtime";
 
-import { auth, db } from '../../Database/firebase';
-import { createParent, createChild, deleteAccount, deleteThing } from '../../Database/auth';
-import { login, logout } from '../../Database/login';
-import { createFamily, joinFamily, deleteFamily } from '../../Database/family';
+import { auth, db } from '../Database/firebase';
+import { createParent, createChild, deleteAccount, deleteThing } from '../Database/auth';
+import { login, logout } from '../Database/login';
+import { createFamily, joinFamily, deleteFamily } from '../Database/family';
+import { createStore, addItem, removeItem, purchaseItem } from '../Database/store';
+import { createChoreList, addChore, removeChore, finishChore } from '../Database/chore';
 
 export const TestScreen = () => {
   return (
@@ -56,6 +58,34 @@ export const TestScreen = () => {
       <Button
         onPress={() => deleteFamily('027DLY', '129')}
         title="delete family"
+      />
+      <Button
+        onPress={() => createStore()}
+        title="create store"
+      />
+      <Button
+        onPress={() => addItem('TestItem', 'this is a test', 100, 'RGx3b0gNLavrvv6Ctefz')}
+        title="add store item"
+      />
+      <Button
+        onPress={() => removeItem('RGx3b0gNLavrvv6Ctefz', 'TestItem')}
+        title="remove store item"
+      />
+      <Button
+        onPress={() => purchaseItem('RGx3b0gNLavrvv6Ctefz', 'TestItem')}
+        title="purchase store item"
+      />
+      <Button
+        onPress={() => addChore('TestItem', 'this is a test', 'kYnvrMjaYrzXMIS7wrBL')}
+        title="add chore item"
+      />
+      <Button
+        onPress={() => removeChore('kYnvrMjaYrzXMIS7wrBL', 'TestItem')}
+        title="remove chore item"
+      />
+      <Button
+        onPress={() => finishChore('kYnvrMjaYrzXMIS7wrBL', 'TestItem')}
+        title="finish chore item"
       />
     </View>
   );

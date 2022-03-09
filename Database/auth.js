@@ -11,6 +11,7 @@ async function createParent(name, email, password) {
       userId: userId,
       email: email,
       name: name,
+      isParent: true,
       whichParent: 'PlaceHolder',
       familyId: null
     });
@@ -30,6 +31,7 @@ async function createChild(name, email, password) {
       userId: userId,
       email: email,
       name: name,
+      isParent: false,
       familyId: null,
       starCount: 0,
       petType: 'placeholder'
