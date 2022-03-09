@@ -6,6 +6,7 @@ import Navigator from './Routes/homeStack'
 import { NavigationBar } from './Screens/Components/NavigationBar';
 import 'react-native-gesture-handler';
 import "@fontsource/plus-jakarta-sans"; 
+import { PickParentChild } from './Screens/Login/PickParentChild';
 
 const fontConfig = {
   web: {
@@ -43,7 +44,9 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      <Navigator />
+      {/* <Navigator /> */}
+      <PickParentChild/>
+      <NavigationBar/>
     </PaperProvider>
   );
 }
