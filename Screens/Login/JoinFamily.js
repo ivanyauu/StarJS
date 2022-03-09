@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { SafeAreaView, Image, StyleSheet, Text, View } from 'react-native';
 import { Button, Card, TextInput, DefaultTheme } from 'react-native-paper';
-import { joinFamily } from '../Database/family';
-import { auth } from '../Database/firebase';
+import { joinFamily } from '../../Database/family';
+import { auth } from '../../Database/firebase';
 
 const styles = StyleSheet.create({
   container: {

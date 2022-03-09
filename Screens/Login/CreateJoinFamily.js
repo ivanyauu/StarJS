@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-paper';
-import { createFamily } from '../Database/family';
+import { createFamily } from '../../Database/family';
 
 const styles = StyleSheet.create({
   container: {

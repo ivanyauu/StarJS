@@ -1,11 +1,11 @@
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
-import { LoginScreen } from "../Screens/LoginScreen";
-import { TestScreen } from "../Screens/TestScreen";
-import { PickParentChild } from "../Screens/PickParentChild";
-import { CreateJoinFamily } from "../Screens/CreateJoinFamily";
-import { JoinFamily } from "../Screens/JoinFamily";
-import { RegisterScreen } from "../Screens/RegisterScreen";
+import { LoginScreen } from "../Screens/Login/LoginScreen";
+import { TestScreen } from "../Screens/Login/TestScreen";
+import { PickParentChild } from "../Screens/Login/PickParentChild";
+import { CreateJoinFamily } from "../Screens/Login/CreateJoinFamily";
+import { JoinFamily } from "../Screens/Login/JoinFamily";
+import { RegisterScreen } from "../Screens/Login/RegisterScreen";
 
 const screens = {
     Login: {

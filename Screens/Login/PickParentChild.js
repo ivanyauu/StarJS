@@ -1,12 +1,13 @@
 import * as React from 'react'
-import { SafeAreaView, Image, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Button } from 'react-native-paper';
 
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#F5F1E9',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
@@ -24,21 +25,29 @@ const styles = StyleSheet.create({
   button: {
     width: 100,
     height: 100,
-    backgroundColor: 'gray',
+    backgroundColor: '#C4C4C4',
     borderRadius: 50,
     justifyContent: 'center',
+    alignContent: 'center',
     marginHorizontal: 10,
-    marginBottom: 32
+    marginBottom: 32,
+    display: 'flex'
   },
   buttonText: {
     color: 'white',
+    margin: 0,
+    textAlign: "center"
+  },
+  buttonStyle: {
+    height: '100%',
   },
   continueButton: {
-    width: '50%',
-    backgroundColor: 'black',
-    borderRadius: 10,
+    width: '30%',
+    backgroundColor: '#4C5A9E',
+    borderRadius: 9,
   },
   continueButtonText: {
+
     color: 'white'
   }
 });
@@ -53,26 +62,36 @@ export const PickParentChild = ({ navigation }) => {
     else if (!isParent && isParentButton) {
       setParent(true);
     }
-    navigation.navigate('Register', {isParent})
+    console.log('')
+  }
+  
+  const clickContinue = () => {
+    navigation.navigate('Register', {isParent});
   }
 
   return (
     <SafeAreaView style = {styles.container}>
       <Text style = {styles.text}>Are you a parent or a child?</Text>
       <View style={styles.buttonContainer}>
-        <Button 
-          style={styles.button}
-          labelStyle={styles.buttonText}
-          onPress={() => clickButton(true)}>
-            Parent
-        </Button>
-        <Button 
-          style={styles.button}
-          labelStyle={styles.buttonText}
-          onPress={() => clickButton(false)}>
-            Child
-        </Button>
+        <TouchableOpacity
+          onPress={() => clickButton()}
+          style={styles.button}>
+            <Text style={styles.buttonText}>Parent</Text>
+        </TouchableOpacity>
+         
+        <TouchableOpacity
+          onPress={() => clickButton()}
+          style={styles.button}>
+            <Text style={styles.buttonText}>Child</Text>
+        </TouchableOpacity>
       </View> 
+      <Button
+          style={styles.continueButton}
+          onPress={() => clickContinue()}
+          labelStyle={styles.continueButtonText}
+        >
+          Continue
+        </Button>
     </SafeAreaView>
   );
 }
