@@ -4,6 +4,8 @@ import {configureFonts, DefaultTheme, Provider as PaperProvider } from 'react-na
 import '@fontsource/roboto/700.css';
 import { createTheme } from '@mui/material/styles';
 import Navigator from './Routes/homeStack'
+import { NavigationBar } from './Screens/Components/NavigationBar';
+import 'react-native-gesture-handler';
 import "@fontsource/plus-jakarta-sans"; 
 
 const fontConfig = {
