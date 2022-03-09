@@ -3,8 +3,8 @@ import { SafeAreaView, Image, StyleSheet, View} from 'react-native';
 import { Button, Card, DefaultTheme, shadow, TextInput } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { login, logout } from '../Database/login';
-import { auth } from '../Database/firebase';
+import { login, logout } from '../../Database/login';
+import { auth } from '../../Database/firebase';
 
 
 const styles = StyleSheet.create({
@@ -68,7 +68,11 @@ export const LoginScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
+<<<<<<< HEAD:Screens/LoginScreen.js
             <Image style={styles.image} source={require('../assets/LogoFinal.png')} />
+=======
+            <Image style={styles.image} source={require('../../assets/StarLogo.png')} />
+>>>>>>> ddc57f32aad75f1042e8390f9371e5a49d6832ce:Screens/Login/LoginScreen.js
             <View style={styles.view} >
                 <Card style={styles.card}>
                     <Card.Content>

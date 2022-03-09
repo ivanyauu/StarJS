@@ -4,7 +4,7 @@ import { Button, Card, TextInput, DefaultTheme, Title, Text } from 'react-native
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { createParent, createChild } from '../Database/auth.js'
+import { createParent, createChild } from '../../Database/auth.js'
 
 
 const styles = StyleSheet.create({
@@ -53,7 +53,7 @@ export const RegisterScreen = ({ navigation }) => {
     const [confirm, setConfirm] = useState('');
     return (
         <SafeAreaView style={styles.container}>
-            <Image style={styles.image} source={require('../assets/star.png')} />
+            <Image style={styles.image} source={require('../../assets/star.png')} />
             <View style={styles.view} >
                 <Card style={styles.card}>
                     <Card.Content>
