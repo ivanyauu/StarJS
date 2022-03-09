@@ -1,33 +1,47 @@
 import { React, useState } from 'react'
-import { SafeAreaView, Image, StyleSheet, View } from 'react-native';
-import { Button, Card, TextInput, DefaultTheme } from 'react-native-paper';
+import { SafeAreaView, Image, StyleSheet, View} from 'react-native';
+import { Button, Card, DefaultTheme, shadow, TextInput } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { login, logout } from '../../Database/login';
 import { auth } from '../../Database/firebase';
 
+
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        backgroundColor: '#0e4883',
+        backgroundColor: '#F5F1E9',
         alignItems: 'center',
         justifyContent: 'center',
     },
     image: {
-        width: '80%',
-        height: '20%',
+        width: '76%',
+        height: '11.5%',
+        position: 'absolute',
+        left: '10.98%',
+        right: '10.98%',
+        top: '23.97%',
+        bottom: '65.36%',
+
     },
     view: {
         width: '80%',
     },
     card: {
         borderRadius: 20,
-        padding: 10
+        boxShadow: 'none',
+        padding: 10,
+        backgroundColor: '#F5F1E9',
+        top: '10%',
     },
-
+    buttons:{
+        bottom: '4%',
+    },
     inputs: {
-        height: 50,
+        height: 46,
+        fontFamily: 'Plus Jakarta Sans',
+
     }
 });
 
@@ -54,13 +68,17 @@ export const LoginScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
+<<<<<<< HEAD:Screens/LoginScreen.js
+            <Image style={styles.image} source={require('../assets/LogoFinal.png')} />
+=======
             <Image style={styles.image} source={require('../../assets/StarLogo.png')} />
+>>>>>>> ddc57f32aad75f1042e8390f9371e5a49d6832ce:Screens/Login/LoginScreen.js
             <View style={styles.view} >
                 <Card style={styles.card}>
                     <Card.Content>
                         <TextInput style={styles.inputs} label='Email' keyboardType='email-address' onChangeText={email => setEmail(email)}></TextInput>
                         <TextInput style={styles.inputs} label='Password' secureTextEntry={true} onChangeText={pass => setPass(pass)} ></TextInput>
-                        <Button uppercase={false}>Forgot Email/Password</Button>
+                    
                         <Button uppercase={false} mode="contained" onPress={async () => {
                             
                             if(await login(email, pass, true)){
@@ -71,7 +89,8 @@ export const LoginScreen = ({ navigation }) => {
                                 console.log('NOT LOGGED IN')
                               }
                             }}>Login</Button>
-                        <Button uppercase={false} onPress = {() => {navigation.navigate('PickParentChild', );}}>Don't Have an account? Sign Up!</Button>
+                        <Button uppercase={false}>Forgot Email/Password</Button>
+                        <Button style={styles.buttons} uppercase={false} onPress = {() => {navigation.navigate('PickParentChild', );}}>Create Account</Button>
                     </Card.Content>
                 </Card>
             </View>
