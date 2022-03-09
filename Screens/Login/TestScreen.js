@@ -5,12 +5,12 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import { addDoc, collection } from 'firebase/firestore';
 import { jsxs as _jsxs } from "react/jsx-runtime";
 
-import { auth, db } from '../Database/firebase';
-import { createParent, createChild, deleteAccount, deleteThing } from '../Database/auth';
-import { login, logout } from '../Database/login';
-import { createFamily, joinFamily, deleteFamily } from '../Database/family';
-import { createStore, addItem, removeItem, purchaseItem } from '../Database/store';
-import { createChoreList, addChore, removeChore, finishChore } from '../Database/chore';
+import { auth, db } from '../../Database/firebase';
+import { createParent, createChild, deleteAccount, deleteThing } from '../../Database/auth';
+import { login, logout } from '../../Database/login';
+import { createFamily, joinFamily, deleteFamily } from '../../Database/family';
+import { createStore, addItem, removeItem, purchaseItem } from '../../Database/store';
+import { createChoreList, addChore, removeChore, finishChore } from '../../Database/chore';
 
 export const TestScreen = () => {
   return (
