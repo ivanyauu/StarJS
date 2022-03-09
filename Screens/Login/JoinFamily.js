@@ -8,15 +8,26 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1,
-    backgroundColor: '#D21F14',
+    backgroundColor: '#4C5A9E',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%'
   },
+  cardStyle: {
+    display: 'flex',
+    backgroundColor: '#F5F1E9',
+    height: '50%',
+    width: '80%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 100
+  },
   text: {
     fontSize: 32,
     color: 'white',
-    marginBottom: 32,
+    marginBottom: 20,
+    textAlign: 'center',
+    top: '20%'
   },
   inputs: {
     width: '80%',
@@ -38,19 +49,21 @@ export const JoinFamily = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Family ID</Text>
-      <TextInput
-        style={styles.inputs}
-        placeholder="Family ID"
-        value={familyId}
-        onChangeText={familyId => setFamilyId(familyId)}
-      />
-      <Button
-        style={styles.button}
-        labelStyle={styles.buttonText}
-        onPress={() => joinFamily(familyId, auth.currentUser.uid, navigation.getParam('isParent'))}>
-        Join
-      </Button>
+      <Card style={styles.cardStyle}>
+        <Text style={styles.text}>Family ID</Text>
+        <TextInput
+          style={styles.inputs}
+          placeholder="Family ID"
+          value={familyId}
+          onChangeText={familyId => setFamilyId(familyId)}
+        />
+        <Button
+          style={styles.button}
+          labelStyle={styles.buttonText}
+          onPress={() => joinFamily(familyId, auth.currentUser.uid, navigation.getParam('isParent'))}>
+          Join
+        </Button>
+      </Card>
     </SafeAreaView>
   );
 }

@@ -12,6 +12,7 @@ import { createTheme } from '@mui/material/styles';
 import Navigator from './Routes/homeStack'
 import { NavigationBar } from './Screens/Components/NavigationBar';
 import 'react-native-gesture-handler';
+import { joinFamily } from './Database/family';
 
 const theme = {
   ...DefaultTheme,
@@ -27,7 +28,8 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      <Navigator />
+      {/* <Navigator /> */}
+      <JoinFamily/>
     </PaperProvider>
   );
 }
