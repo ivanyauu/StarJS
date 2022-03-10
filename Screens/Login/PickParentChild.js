@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { SafeAreaView, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Button } from 'react-native-paper';
 
 const styles = StyleSheet.create({
@@ -25,7 +24,6 @@ const styles = StyleSheet.create({
   button: {
     width: 100,
     height: 100,
-    backgroundColor: '#C4C4C4',
     borderRadius: 50,
     justifyContent: 'center',
     alignContent: 'center',
@@ -46,23 +44,38 @@ const styles = StyleSheet.create({
     backgroundColor: '#4C5A9E',
     borderRadius: 9,
   },
-  continueButtonText: {
-
-    color: 'white'
+  focusedBackground: {
+    backgroundColor: '#808080'
+  },
+  notFocusedBackground: {
+    backgroundColor: '#C4C4C4'
   }
 });
 
 export const PickParentChild = ({ navigation }) => {
-  const [isParent, setParent] = React.useState(true);
+  const [isParent, setParent] = React.useState(null);
+  const [parentBackground, setParentBackground] = React.useState(styles.notFocusedBackground);
+  const [childBackground, setChildBackground] = React.useState(styles.notFocusedBackground);
+
+  React.useEffect(() => {
+    if (isParent == true) {
+      setParentBackground(styles.focusedBackground);
+      setChildBackground(styles.notFocusedBackground);
+    }
+    else if (isParent == false) {
+      setParentBackground(styles.notFocusedBackground);
+      setChildBackground(styles.focusedBackground);
+    }
+    
+  }, [isParent])
   
   const clickButton = (isParentButton) => {
-    if (isParent && !isParentButton) {
+    if (!isParentButton) {
       setParent(false);
     }
-    else if (!isParent && isParentButton) {
+    else if (isParentButton) {
       setParent(true);
     }
-    console.log('')
   }
   
   const clickContinue = () => {
@@ -74,21 +87,21 @@ export const PickParentChild = ({ navigation }) => {
       <Text style={styles.text}>Are you a parent or a child?</Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={() => clickButton()}
-          style={styles.button}>
+          onPress={() => clickButton(true)}
+          style={[styles.button, parentBackground]}>
             <Text style={styles.buttonText}>Parent</Text>
         </TouchableOpacity>
          
         <TouchableOpacity
-          onPress={() => clickButton()}
-          style={styles.button}>
+          onPress={() => clickButton(false)}
+          style={[styles.button, childBackground]}>
             <Text style={styles.buttonText}>Child</Text>
         </TouchableOpacity>
       </View> 
       <Button
           style={styles.continueButton}
           onPress={() => clickContinue()}
-          labelStyle={styles.continueButtonText}
+          labelStyle={styles.buttonText}
         >
           Continue
         </Button>
