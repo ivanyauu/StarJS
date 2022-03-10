@@ -48,7 +48,16 @@ async function joinFamily(familyId, uid, isParent) {
     let addUser = {};
     addUser[cl] = fs.arrayUnion(uid);
     await fs.updateDoc(fs.doc(db, "Families", `${familyId}`), addUser);
-
+    if (isParent) {
+      await fs.updateDoc(fs.doc(db, "Parents", uid), {
+        familyId: familyId
+      });
+    }
+    else {
+      await fs.updateDoc(fs.doc(db, "Kids", uid), {
+        familyId: familyId
+      });
+    }
     return familyId;
   }
   catch (error) {
