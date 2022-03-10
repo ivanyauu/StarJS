@@ -7,6 +7,7 @@ import { NavigationBar } from './Screens/Components/NavigationBar';
 import 'react-native-gesture-handler';
 import "@fontsource/plus-jakarta-sans"; 
 import { PickParentChild } from './Screens/Login/PickParentChild';
+import { ShopParent } from './Screens/Shop/ShopParent';
 
 const fontConfig = {
   web: {
@@ -44,7 +45,8 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      <Navigator />
+      <ShopParent/>
+      {/* <Navigator /> */}
       {/* <PickParentChild/>
       <NavigationBar/> */}
     </PaperProvider>
