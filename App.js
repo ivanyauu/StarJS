@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {configureFonts, DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-import '@fontsource/roboto/700.css';
 import { createTheme } from '@mui/material/styles';
 import Navigator from './Routes/homeStack'
 import { NavigationBar } from './Screens/Components/NavigationBar';
@@ -45,9 +44,9 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      {/* <Navigator /> */}
-      <PickParentChild/>
-      <NavigationBar/>
+      <Navigator />
+      {/* <PickParentChild/>
+      <NavigationBar/> */}
     </PaperProvider>
   );
 }
